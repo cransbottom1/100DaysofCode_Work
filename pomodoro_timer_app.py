@@ -2,6 +2,11 @@ from datetime import datetime
 from datetime import timedelta
 
 
+# Simple Pomodoro Timer
+# Work loop still needs a bit of work: Short breaks should stop happening after
+# 4 work intervals.
+
+
 def work_interval_timer():
     """Time the 25 minute work intervals."""
     print("Time to get to work!\n")
@@ -46,14 +51,16 @@ if instructions == 'c':
         work_interval_timer()
         counter += 1
         short_break()
-        start_working = input("Enter 'c' to continue, 'x' to quit.\n>")
+        start_working = input("Please enter [c]ontinue to start or e[x]it to "
+                              "quit\n>")
         if start_working == 'c':
             pass
         elif start_working == 'x':
             pomodoro = False
         if counter == 4:
             long_break()
-            start_again = input("Enter 'c' to continue, 'x' to quit.\n>")
+            start_again = input("If you would like to start over, enter "
+                                "[c]ontinue to start or e[x]it to quit\n>")
             if start_again == 'c':
                 counter = 0
             elif start_again == 'x':
